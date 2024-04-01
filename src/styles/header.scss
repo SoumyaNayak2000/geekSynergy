@@ -1,0 +1,98 @@
+.header {
+  background-color: #082509c0; /* Green background color */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+}
+
+.logo {
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .geekSynergy {
+    display: inline-block;
+
+    .geek,
+    .synergy {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .geek {
+      background-color: #ff5722; /* Orange background color for "Geek" */
+      margin-right: -5px; /* Negative margin to eliminate space between "Geek" and "Synergy" */
+    }
+
+    .synergy {
+      background-color: #2196f3; /* Blue background color for "Synergy" */
+    }
+  }
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox for aligning links */
+  align-items: center; /* Center items vertically */
+
+  li {
+    margin-right: 20px;
+    padding: 8px 16px; /* Add padding to make the list items more clickable */
+    border-radius: 5px; /* Add rounded corners to the list items */
+    transition: background-color 0.3s; /* Apply transition effect to background color */
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    &:last-child {
+      margin-right: 0; /* Remove margin from the last item */
+    }
+
+    &:hover {
+      background-color: #ffeb3b; /* Change background color on hover */
+    }
+  }
+
+  /* Center align links */
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Add unique background colors for the list items */
+.nav-list li:nth-child(1) {
+  background-color: #f44336; /* Red */
+}
+
+.nav-list li:nth-child(2) {
+  background-color: #ff9800; /* Orange */
+}
+
+.nav-list li:nth-child(3) {
+  background-color: #275512; /* dark green */
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+
+  .nav-list {
+    justify-content: center;
+    flex-grow: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo h2 {
+    font-size: 20px;
+  }
+}
