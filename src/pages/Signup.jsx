@@ -107,3 +107,32 @@ const Signup = () => {
 };
 
 export default Signup;
+
+/*
+This is a React component named `Signup`, responsible for rendering a form for user signup. Let's break down its key aspects:
+
+1. **State Management**: It uses the `useState` hook to manage form data. The initial state includes fields like `name`, `email`, `password`, `phone`, and `profession`.
+
+2. **Form Handling Functions**:
+   - `handleChange`: This function updates the form data state as the user types in the input fields.
+   - `handleSubmit`: This function is triggered when the user submits the form. It prevents the default form submission behavior, stores the form data in local storage (for demonstration purposes), redirects the user to the login page, and displays a success toast notification.
+
+3. **Form Structure**:
+   - The form consists of input fields for `name`, `email`, `password`, `phone`, and a dropdown for selecting `profession`.
+   - Each input field is associated with a label for better accessibility.
+   - The `onChange` event is used to call the `handleChange` function whenever the value of an input field changes.
+   - The submit button triggers the `handleSubmit` function when clicked.
+
+4. **React Router Navigation**:
+   - It uses the `useNavigate` hook from React Router to navigate to different routes.
+   - Upon successful form submission, the user is redirected to the login page.
+
+5. **Toast Notifications**:
+   - It utilizes the `react-hot-toast` library to display toast notifications.
+   - When the user successfully signs up, a success toast is displayed.
+
+6. **Link to Login**:
+   - It provides a link to the login page for users who already have an account.
+
+Overall, this component enables users to sign up by providing their information through a form, handles form submission, and provides visual feedback to the user through toast notifications.
+ */
