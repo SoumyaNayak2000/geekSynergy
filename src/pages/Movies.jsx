@@ -2,36 +2,22 @@ import { useEffect, useState } from "react";
 import "../styles/movies.scss";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 import axios from "axios";
+import moviesData from "../data/movies.json";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
   const [loading, setLoading] = useState(true); // State to manage loading state
   const moviesPerPage = 10;
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.post(
-          "https://hoblist.com/api/movieList",
-          {
-            category: "movies",
-            language: "kannada",
-            genre: "all",
-            sort: "voting",
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        );
-        setMovies(response.data.result);
+        setMovies(moviesData);
         setLoading(false); // Set loading to false when data is fetched
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
 
@@ -50,7 +36,7 @@ const Movies = () => {
         {loading
           ? Array.from({ length: moviesPerPage }, (_, i) => (
               <div className="movie-card " key={i}>
-                <div className="top-container">
+                <div className="top-container" key={i}>
                   <div className="voting-container "></div>
                   <div className="movie-poster "></div>
                   <div className="info-container ">

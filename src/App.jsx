@@ -19,7 +19,6 @@ import toast, { Toaster } from "react-hot-toast";
 export const UserContext = createContext();
 
 const App = () => {
-  const navigate = useNavigate;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -27,7 +26,6 @@ const App = () => {
     localStorage.removeItem("userData");
     setUser(null);
     setIsAuthenticated(false);
-    navigate("/login");
     toast.success("Logged out");
   };
 
@@ -38,7 +36,16 @@ const App = () => {
       setUser(savedUserData);
       setIsAuthenticated(true);
     }
-  }, [user, isAuthenticated]);
+  }, []);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
+    if (userData) {
+      setUser(userData);
+      setIsAuthenticated(true);
+    }
+  }, [isAuthenticated]);
 
   return (
     <Router>
@@ -90,7 +97,6 @@ const App = () => {
 };
 
 export default App;
-
 
 /*
 This is a React application that utilizes React Router for navigation and protected routes using the `protected-route-react` package. Let's break down the key components and functionalities:

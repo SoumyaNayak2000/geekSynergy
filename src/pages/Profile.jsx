@@ -2,9 +2,15 @@ import { useContext } from "react";
 import "../styles/profile.scss";
 
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const { user, logoutHandler } = useContext(UserContext);
+  const logOut = () => {
+    logoutHandler();
+    navigate("/login");
+  };
 
   return (
     <div className="profile">
@@ -25,7 +31,7 @@ const Profile = () => {
           <div>{user?.profession}</div>
         </div>
       </div>
-      <button className="logout-btn" onClick={logoutHandler}>
+      <button className="logout-btn" onClick={logOut}>
         Logout
       </button>
     </div>
